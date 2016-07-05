@@ -11,7 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Content="Решить" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button" Content="Решить" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="274" Margin="432,35,0,0" VerticalAlignment="Top" Width="75"/>
         <Image x:Name="skobka_jpg" Margin="-127,142,345,141" Source="skobka.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
@@ -23,6 +23,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="299" Margin="38,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="389" AcceptsReturn="True"/>
 
     </Grid>
 </Window>

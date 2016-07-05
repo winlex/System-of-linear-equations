@@ -25,8 +25,11 @@ namespace System_of_linear_equations
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            //SystemEquations = new SystemEquations(textBox.Text);
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            SystemEquations = new SystemEquations(textBox.Text);
         }
     }
 }
