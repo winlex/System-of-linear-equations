@@ -29,7 +29,10 @@ namespace System_of_linear_equations
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            listBox.Items.Clear();
             SystemEquations = new SystemEquations(textBox.Text);
+            foreach (string s in SystemEquations.var)
+                listBox.Items.Add(s);
         }
     }
 }
