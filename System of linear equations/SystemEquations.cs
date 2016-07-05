@@ -8,14 +8,21 @@ namespace System_of_linear_equations
 {
     class SystemEquations
     {
-        private SortedList<String, int> ac = new SortedList<String,int>();
+        private SortedList<String, int> var = new SortedList<String,int>();
         private List<double> main_coe = new List<double>();
         private Matrix matrix = new Matrix();
+        List<Matrix> submatrix = new List<Matrix>();
 
         public SystemEquations(String str)
         {
             str = clear(str);
             Parser(str, 0, "");
+            matrix.Dic();
+            matrix.TakeMatrix();
+            for (int i = 0; i < var.Count; i++)
+            {
+                submatrix.Add(new Matrix(matrix.GetMatrix, main_coe, matrix.IndexOf(var.Keys[i])));
+            }
         }
 
         private void Parser(String str, int i, String temp)
@@ -91,9 +98,15 @@ namespace System_of_linear_equations
                         }
                         break;
                     #endregion
-                    case '.':
+                    case ',':
                         {
                             temp += str[i];
+                            Parser(str, ++i, temp);
+                        }
+                        break;
+                    case '.':
+                        {
+                            temp += ',';
                             Parser(str, ++i, temp);
                         }
                         break;
@@ -145,8 +158,18 @@ namespace System_of_linear_equations
                         break;
                     default:
                         {
-                            matrix.Add(Convert.ToDouble(temp), str[i].ToString());
-                            Parser(str, ++i, "");
+                            if (temp != "")
+                            {
+                                matrix.Add(Convert.ToDouble(temp), str[i].ToString());
+                                try { var.Add(str[i].ToString(), 0); } catch (Exception e) { }
+                                Parser(str, ++i, "");
+                            }
+                            else
+                            {
+                                matrix.Add(1, str[i].ToString());
+                                try { var.Add(str[i].ToString(), 0); } catch (Exception e) { }
+                                Parser(str, ++i, "");
+                            }
                         }
                         break;
                 }
@@ -154,6 +177,8 @@ namespace System_of_linear_equations
 
         private String clear(String str)
         {
+            while (str.IndexOf("\r\n") > -1)
+                str = str.Remove(str.IndexOf("\r\n"), 2);
             return str;
         }
     }
