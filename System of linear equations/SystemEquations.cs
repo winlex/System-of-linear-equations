@@ -8,7 +8,7 @@ namespace System_of_linear_equations
 {
     class SystemEquations
     {
-        private SortedList<String, int> var = new SortedList<String,int>();
+        public List<String> var = new List<String>();
         private List<double> main_coe = new List<double>();
         private Matrix matrix = new Matrix();
         List<Matrix> submatrix = new List<Matrix>();
@@ -20,9 +20,9 @@ namespace System_of_linear_equations
             matrix.Dic();
             matrix.TakeMatrix();
             for (int i = 0; i < var.Count; i++)
-            {
-                submatrix.Add(new Matrix(matrix.GetMatrix, main_coe, matrix.IndexOf(var.Keys[i])));
-            }
+                submatrix.Add(new Matrix(matrix.GetMatrix, main_coe, matrix.IndexOf(var[i])));
+            for (int i = 0; i < var.Count; i++)
+                var[i] += var[i] + "" + submatrix[i].Det() / matrix.Det();
         }
 
         private void Parser(String str, int i, String temp)
@@ -160,14 +160,26 @@ namespace System_of_linear_equations
                         {
                             if (temp != "")
                             {
-                                matrix.Add(Convert.ToDouble(temp), str[i].ToString());
-                                try { var.Add(str[i].ToString(), 0); } catch (Exception e) { }
-                                Parser(str, ++i, "");
+                                if (temp == "-")
+                                {
+                                    matrix.Add(-1, str[i].ToString());
+                                    if (var.IndexOf(str[i].ToString()) == -1)
+                                        var.Add(str[i].ToString());
+                                    Parser(str, ++i, "");
+                                }
+                                else
+                                {
+                                    matrix.Add(Convert.ToDouble(temp), str[i].ToString());
+                                    if (var.IndexOf(str[i].ToString()) == -1)
+                                        var.Add(str[i].ToString());
+                                    Parser(str, ++i, "");
+                                }
                             }
                             else
                             {
                                 matrix.Add(1, str[i].ToString());
-                                try { var.Add(str[i].ToString(), 0); } catch (Exception e) { }
+                                if (var.IndexOf(str[i].ToString()) == -1)
+                                    var.Add(str[i].ToString());
                                 Parser(str, ++i, "");
                             }
                         }
