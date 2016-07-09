@@ -19,10 +19,15 @@ namespace System_of_linear_equations
             Parser(str, 0, "");
             matrix.Dic();
             matrix.TakeMatrix();
-            for (int i = 0; i < var.Count; i++)
-                submatrix.Add(new Matrix(matrix.GetMatrix, main_coe, matrix.IndexOf(var[i])));
-            for (int i = 0; i < var.Count; i++)
-                var[i] += " = " + Math.Round(submatrix[i].Det() / matrix.Det(),2);
+            if (matrix.Det() == 0)
+                var[0] = "Решений нет/множество";
+            else
+            {
+                for (int i = 0; i < var.Count; i++)
+                    submatrix.Add(new Matrix(matrix.GetMatrix, main_coe, matrix.IndexOf(var[i])));
+                for (int i = 0; i < var.Count; i++)
+                    var[i] += " = " + Math.Round(submatrix[i].Det() / matrix.Det(), 2);
+            }
         }
 
         private void Parser(String str, int i, String temp)

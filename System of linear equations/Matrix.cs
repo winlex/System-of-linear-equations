@@ -71,7 +71,7 @@ namespace System_of_linear_equations
         public void Add(double t, String var)
         {
             if (IndexOf(var) > -1)
-                mat_coe[gcount - 1, IndexOf(var)] += mat_coe[gcount - 1, IndexOf(var)] + t;
+                mat_coe[gcount - 1, IndexOf(var)] += t;
             else
             {
                 mat_var[gcount - 1, vcount - 1] = var;
@@ -131,6 +131,8 @@ namespace System_of_linear_equations
 
         public double Determinant()
         {
+            if (vcount == 1)
+                return matrix[0, 0];
             if (vcount == 2)
             {
                 double c = matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];

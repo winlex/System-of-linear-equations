@@ -16,13 +16,13 @@ C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of l
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations.exe
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations.pdb
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations.csprojResolveAssemblyReference.cache
-C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\MainWindow.g.cs
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\App.g.cs
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations_MarkupCompile.cache
-C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations_MarkupCompile.lref
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\bin\Debug\System of linear equations.exe
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\bin\Debug\System of linear equations.pdb
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\MainWindow.baml
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations.g.resources
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System_of_linear_equations.Properties.Resources.resources
 C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations.csproj.GenerateResource.Cache
+C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\MainWindow.g.cs
+C:\Users\Alexander\Documents\My workspace\System-of-linear-equations\System of linear equations\obj\Debug\System of linear equations_MarkupCompile.lref
