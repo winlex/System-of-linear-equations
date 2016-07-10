@@ -20,12 +20,13 @@ namespace System_of_linear_equations
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool s = true;
         SystemEquations SystemEquations;
 
         List<string> abc = new List<string> { "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" };
         List<string> zn = new List<string> { "-","+" };
         List<string> history = new List<string>();
-        List<ListBox> ans = new List<ListBox>();
+        List<SystemEquations> ans = new List<SystemEquations>();
 
         public MainWindow()
         {
@@ -67,14 +68,18 @@ namespace System_of_linear_equations
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (listBox1.Items.IndexOf(textBox.Text) == -1)
-                listBox1.Items.Add(textBox.Text);
-            history.Add(textBox.Text);
-            ans.Add(listBox);
-            listBox.Items.Clear();
-            SystemEquations = new SystemEquations(textBox.Text);
-            foreach (string s in SystemEquations.var)
-                listBox.Items.Add(s);
+            if (!Catch(textBox.Text))
+            {
+                if (listBox1.Items.IndexOf(textBox.Text) == -1)
+                    listBox1.Items.Add(textBox.Text);
+                history.Add(textBox.Text);
+                listBox.Items.Clear();
+                SystemEquations = new SystemEquations(textBox.Text);
+                foreach (string s in SystemEquations.var)
+                    listBox.Items.Add(s);
+                ans.Add(SystemEquations);
+            }
+            else MessageBox.Show("");
         }
 
         private void textBox1_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -86,7 +91,26 @@ namespace System_of_linear_equations
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             textBox.Text = history[listBox1.SelectedIndex];
-            listBox = ans[listBox1.SelectedIndex];
+            listBox.Items.Clear();
+            foreach (string s in ans[listBox1.SelectedIndex].var)
+                listBox.Items.Add(s);
+        }
+
+        private void TextInputEvent(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789".IndexOf(e.Text) < 0;
+        }
+
+        private bool Catch(string str)
+        {
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                if ("abcdefghjkilmnopqrstuvwxyz.,".IndexOf(str[i]) > -1 && "abcdefghjkilmnopqrstuvwxyz.,".IndexOf(str[i + 1]) > -1)
+                    return true;
+                if ("+-*".IndexOf(str[i]) > -1 && "+-*".IndexOf(str[i + 1]) > -1)
+                    return true;
+            }
+            return false;
         }
     }
 }

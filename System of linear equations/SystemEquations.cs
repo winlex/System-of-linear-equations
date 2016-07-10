@@ -35,6 +35,11 @@ namespace System_of_linear_equations
             if (i < str.Length)
                 switch (str[i])
                 {
+                    case ' ':
+                        {
+                            Parser(str, ++i, temp);
+                        }
+                        break;
                     case '-':
                         {
                             temp += str[i];
